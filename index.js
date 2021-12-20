@@ -1,11 +1,15 @@
 const express = require("express");
 const app = express();
 
-const path = require("path");
+app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  //   console.log("Hello Express Js");
-  res.sendFile(path.join(__dirname, "views", "index.html"));
+  res.render("index", { title: "World" });
 });
-
+app.get("/about", (req, res) => {
+  res.render("index", { title: "About" });
+});
+app.get("/contact", (req, res) => {
+  res.render("index", { title: "Contact" });
+});
 app.listen(5000, () => console.log("Server is run..."));
