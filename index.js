@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 app.set("view engine", "ejs");
+// app.use(middileLogger);
 const userRouter = require("./routes/user");
 
 app.get("/", (req, res) => {

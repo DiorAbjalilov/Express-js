@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+router.use(middileLogger);
+
 router.get("/", (req, res) => {
   res.send("User name");
 });
@@ -31,8 +33,11 @@ const users = [{ name: "Diyor" }, { name: "Abdurahmon" }];
 router.param("id", (req, res, next, id) => {
   req.user = users[id];
   next();
-
-  //   console.log(id);
 });
+
+function middileLogger(req, res, next) {
+  console.log(req.originalUrl);
+  next();
+}
 
 module.exports = router;
